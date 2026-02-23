@@ -1,5 +1,4 @@
 import os
-import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from langchain_community.vectorstores import FAISS
@@ -77,6 +76,3 @@ async def recommend_recipes(request: RecipeRequest):
         raise HTTPException(status_code=500, detail=str(e))
     
 
-if name == "main":
-    port = int(os.environ.get("PORT", 7860))
-    uvicorn.run("app:app", host="0.0.0.0", port=port)
